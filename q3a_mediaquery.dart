@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
 
-class Example3A extends StatelessWidget {
-  @override
-  Widget build(context) {
-    double w = MediaQuery.of(context).size.width;
+void main() {
+  runApp(MyApp());
+}
 
-    return Scaffold(
-      body: Container(
-        color: w < 600 ? Colors.pink : Colors.blue,
-        child: Center(
-          child: Text(w < 600 ? "Mobile View" : "Desktop View"),
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Builder(
+          builder: (context) {
+            double width = MediaQuery.of(context).size.width;
+
+            // Breakpoint: mobile < 600, desktop ≥ 600
+            if (width < 600) {
+              return Container(
+                color: Colors.pink,
+                child: Center(child: Text("Mobile View")),
+              );
+            } else {
+              return Container(
+                color: Colors.blue,
+                child: Center(child: Text("Desktop View")),
+              );
+            }
+          },
         ),
       ),
     );
