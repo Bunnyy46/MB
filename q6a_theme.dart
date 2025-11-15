@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(ThemeExample());
+void main() => runApp(
+  MaterialApp(
+    theme: ThemeData(primaryColor: Colors.purple),
+    home: Home(),
+  ),
+);
 
-class ThemeExample extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
-  Widget build(context) {
-    return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.purple),
-      home: Scaffold(
-        appBar: AppBar(title: Text("Theme")),
-        body: Center(child: Text("Hello", style: TextStyle(fontSize: 40))),
+  build(c) => Scaffold(
+    appBar: AppBar(title: Text("Theme")),
+    backgroundColor: Colors.amber,
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Hello", style: TextStyle(fontSize: 40)),
+          ElevatedButton(onPressed: () {}, child: Text("Click")),
+        ],
       ),
-    );
-  }
+    ),
+  );
 }
