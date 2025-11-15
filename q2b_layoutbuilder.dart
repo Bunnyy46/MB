@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
+  
+ void main(){
+   runApp(MyApp());
+}
 
-class Example2B extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (ctx, size) {
-          bool mobile = size.maxWidth < 600;
-          return Container(
-            color: mobile ? Colors.pink : Colors.blue,
-            child: Center(
-              child: Text(mobile ? "Mobile View" : "Desktop View"),
-            ),
-          );
-        },
+class MyApp extends StatelessWidget{
+   Widget build(BuildContext context){
+     return MaterialApp(
+     home:Scaffold(
+      body:LayoutBuilder(
+       builder:(context ,constraints){
+         if(constraints.maxWidth<600){
+           return Container(
+             color: Colors.pink,
+             child: Center(child: Text("Mobile View")),
+           );
+         }else{
+           return Container(
+             color: Colors.blue,
+             child: Center(child: Text("Desktop View")),
+           );
+         }
+       }
       ),
-    );
-  }
+     ),
+     );
+   }
 }
