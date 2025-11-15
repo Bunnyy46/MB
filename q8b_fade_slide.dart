@@ -17,15 +17,15 @@ class _AState extends State<A> with SingleTickerProviderStateMixin {
   late final slide = Tween(begin: Offset(0, 1), end: Offset.zero).animate(c);
 
   @override
-  Widget build(ctx) => Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FadeTransition(opacity: fade, child: Text("Fade")),
-              SlideTransition(position: slide, child: Text("Slide")),
-            ],
-          ),
-        ),
-      );
+  build(ctx) => Scaffold(
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FadeTransition(opacity: fade, child: Text("Fade")),
+          SlideTransition(position: slide, child: Text("Slide")),
+        ],
+      ),
+    ),
+  );
 }
