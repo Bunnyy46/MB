@@ -1,33 +1,26 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(home: AnimBox()));
+void main() => runApp(MyApp());
 
-class AnimBox extends StatefulWidget {
-  @override
-  State<AnimBox> createState() => _AnimBoxState();
-}
+class MyApp extends StatefulWidget {
+  State<MyApp> createState() => _S(); }
 
-class _AnimBoxState extends State<AnimBox> with SingleTickerProviderStateMixin {
-  late final c = AnimationController(
-    vsync: this,
-    duration: Duration(seconds: 1),
-  )..repeat(reverse: true);
-
-  late final s = Tween(begin: 50.0, end: 150.0).animate(c);
+class _S extends State<MyApp> {
+  bool show = true;
 
   @override
-  Widget build(context) {
-    return Scaffold(
+  Widget build(BuildContext c) => MaterialApp(
+    home: Scaffold(
       body: Center(
-        child: AnimatedBuilder(
-          animation: c,
-          builder: (_, __) => Container(
-            width: s.value,
-            height: s.value,
-            color: Colors.blue,
+        child: GestureDetector(
+          onTap: () => setState(() => show = !show),
+          child: AnimatedOpacity(
+            duration: Duration(seconds: 1),
+            opacity: show ? 1 : 0,
+            child: Text("Hello", style: TextStyle(fontSize: 30)),
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
