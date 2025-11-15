@@ -1,40 +1,43 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(AppWithRoutes());
+void main() {
+   runApp(MaterialApp(
+   initialRoute: '/',
+   routes: {
+    '/':(context) => FirstPage(),
+    '/second':(context) =>SecondPage()
+   },
+));
+}
 
-class AppWithRoutes extends StatelessWidget {
-  @override
-  Widget build(context) {
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        '/': (_) => First(),
-        '/second': (_) => Second(),
-      },
+class FirstPage extends StatelessWidget{
+ Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(title: Text("Naviagting between pages")),
+    body:Center(
+      child:ElevatedButton(
+      child:Text("Go to second PAge"),
+       onPressed: () { 
+        Navigator.pushNamed(context, '/second');
+       },
+      ),
+    ),
     );
-  }
+ }
 }
-
-class First extends StatelessWidget {
-  @override
-  Widget build(c) => Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            child: Text("Go"),
-            onPressed: () => Navigator.pushNamed(c, '/second'),
-          ),
-        ),
-      );
-}
-
-class Second extends StatelessWidget {
-  @override
-  Widget build(c) => Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            child: Text("Back"),
-            onPressed: () => Navigator.pop(c),
-          ),
-        ),
-      );
+class SecondPage extends StatelessWidget{
+ Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(title: Text("Second one")),
+    body:Center(
+      child:ElevatedButton(
+      child:Text("Go Back"),
+       onPressed: (){
+        Navigator.pop(context);
+        },
+      ),
+    ),
+  
+   );
+ }
 }
