@@ -4,14 +4,14 @@ void main() => runApp(MaterialApp(home: FirstPage()));
 
 class FirstPage extends StatelessWidget {
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          child: Text("Next"),
+          child: Text("Go to Second Page"),
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => SecondPage()),
+            MaterialPageRoute(builder: (context) => SecondPage()),
           ),
         ),
       ),
@@ -21,7 +21,7 @@ class FirstPage extends StatelessWidget {
 
 class SecondPage extends StatelessWidget {
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
@@ -31,4 +31,4 @@ class SecondPage extends StatelessWidget {
       ),
     );
   }
-}
+} 
